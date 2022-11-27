@@ -39,6 +39,15 @@ class Calculator {
 
         this.buttonAddition = document.querySelector ("#button-addition-id")
         this.buttonAddition.addEventListener ("click", () => this.AdditionFunc())
+        this.subtractionButton = document.querySelector 
+        ("#subtraction-button-id")
+        this.subtractionButton.addEventListener ("click", () => this.SubtractionFunc())
+        this.multiplicationButton = document.querySelector ("#multiplication-button-id")
+        this.multiplicationButton.addEventListener ("click", () => this.MultiplicationFunc())
+        this.divisionButton = document.querySelector ("#division-button-id")
+        this.divisionButton.addEventListener ("click", () => this.DivisionFunc())
+        this.percentageButton = document.querySelector ("#percentage-button-id")
+        this.percentageButton.addEventListener ("click", () => this.PercentageFunc())
         
         this.output = '0'
         this.previousOperant.innerHTML = this.output
@@ -46,14 +55,26 @@ class Calculator {
 
         this.signal = ''
         this.total = 0
+        this.conditionTwo = 0
     }
 
     buttonEqualFunc() {
-        this.conditionTwo = this.output
-        this.conditionTwo = Number(this.conditionTwo.value)
-        this.total = this.conditionOne + this.conditionTwo
 
-        this.previousOperant.innerHTML = `${this.conditionOne} + ${this.conditionTwo} = ${this.total}`
+        this.conditionTwo = parseFloat(this.output)
+
+        if (this.signal == '+') {
+            this.total = this.conditionOne + this.conditionTwo
+        } else if (this.signal == '-') {
+            this.total = this.conditionOne - this.conditionTwo
+        } else if (this.signal == '*') {
+            this.total = this.conditionOne * this.conditionTwo
+            this.signal = 'x' 
+        } else if (this.signal == '/') {
+            this.total = this.conditionOne / this.conditionTwo
+            this.signal = '÷' 
+        }
+
+        this.previousOperant.innerHTML = `${this.conditionOne} ${this.signal} ${this.conditionTwo} = ${this.total}`
 
         this.output = '0'
         this.currentOperant.innerHTML = this.output
@@ -74,6 +95,7 @@ class Calculator {
         this.output += ','
         this.currentOperant.innerHTML = this.output
     }
+
 
     // NUMBERS
 
@@ -191,13 +213,46 @@ class Calculator {
     AdditionFunc() {
         this.signal = '+'
         this.previousOperant.innerHTML = this.output
-        console.log (this.output)
-        console.log (typeof this.output)
-        this.conditionOne = Number(this.output.value)
-        console.log (this.conditionOne)
-        console.log (typeof this.conditionOne)
+        this.conditionOne = parseFloat(this.output)
         this.output = 0
         this.currentOperant.innerHTML = `+`
+    }
+
+    SubtractionFunc() {
+        this.signal = '-'
+        this.previousOperant.innerHTML = this.output
+        this.conditionOne = parseFloat(this.output)
+        this.output = 0
+        this.currentOperant.innerHTML = `-`
+    }
+
+    MultiplicationFunc() {
+        this.signal = '*'
+        this.previousOperant.innerHTML = this.output
+        this.conditionOne = parseFloat(this.output)
+        this.output = 0
+        this.currentOperant.innerHTML = `x`
+    }
+
+    DivisionFunc() {
+        this.signal = '/'
+        this.previousOperant.innerHTML = this.output
+        this.conditionOne = parseFloat(this.output)
+        this.output = 0
+        this.currentOperant.innerHTML = `÷`
+    }
+
+    PercentageFunc() {
+
+        this.conditionTwo = parseFloat(this.output)
+        this.total = (this.conditionOne / 100) * this.conditionTwo
+
+        this.signal = 'x'
+        this.previousOperant.innerHTML = `${this.conditionOne} ${this.signal} ${this.conditionTwo} % = ${this.total.toFixed(2).replace('.',',')}`
+
+        this.output = '0'
+        this.currentOperant.innerHTML = this.output
+        
     }
 
 }
