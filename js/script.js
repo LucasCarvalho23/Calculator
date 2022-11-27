@@ -56,6 +56,127 @@ class Calculator {
         this.signal = ''
         this.total = 0
         this.conditionTwo = 0
+
+    
+        // Interation with the keyboard
+
+        document.addEventListener("keypress", (e) => {
+            if(e.key === '0') {
+                this.number0.click();
+            }
+        });
+
+        document.addEventListener("keypress", (e) => {
+            if(e.key === '1') {
+                this.number1.click();
+            }
+        });
+
+        document.addEventListener("keypress", (e) => {
+            if(e.key === '2') {
+                this.number2.click();
+            }
+        });
+
+        document.addEventListener("keypress", (e) => {
+            if(e.key === '3') {
+                this.number3.click();
+            }
+        });
+
+        document.addEventListener("keypress", (e) => {
+            if(e.key === '4') {
+                this.number4.click();
+            }
+        });
+
+        document.addEventListener("keypress", (e) => {
+            if(e.key === '5') {
+                this.number5.click();
+            }
+        });
+
+        document.addEventListener("keypress", (e) => {
+            if(e.key === '6') {
+                this.number6.click();
+            }
+        });
+
+        document.addEventListener("keypress", (e) => {
+            if(e.key === '7') {
+                this.number7.click();
+            }
+        });
+
+        document.addEventListener("keypress", (e) => {
+            if(e.key === '8') {
+                this.number8.click();
+            }
+        });
+
+        document.addEventListener("keypress", (e) => {
+            if(e.key === '9') {
+                this.number9.click();
+            }
+        });
+
+        document.addEventListener("keypress", (e) => {
+            if(e.key === 'Enter') {
+                this.buttonEqual.click();
+            }
+        });
+
+        document.addEventListener("keypress", (e) => {
+            if(e.key === '+') {
+                this.buttonAddition.click();
+            }
+        });
+
+        document.addEventListener("keypress", (e) => {
+            if(e.key === '-') {
+                this.subtractionButton.click();
+            }
+        });
+
+        document.addEventListener("keypress", (e) => {
+            if(e.key === '*') {
+                this.multiplicationButton.click();
+            } else if (e.key === 'x') {
+                this.multiplicationButton.click();
+            }
+        });
+
+        document.addEventListener("keypress", (e) => {
+            if(e.key === '/') {
+                this.divisionButton.click();
+            }
+        });
+
+        document.addEventListener("keypress", (e) => {
+            if(e.key === 'c') {
+                this.buttonClear.click();
+            }
+        });
+
+        document.addEventListener("keypress", (e) => {
+            if(e.key === 'd') {
+                if (this.output == 0) {
+                    this.currentOperant.innerHTML = `0`
+                } else {
+                    this.buttonCancel.click();
+                    if (this.output == '') {
+                        this.currentOperant.innerHTML = `0`
+                    }
+                }
+            }
+        });
+
+        document.addEventListener("keypress", (e) => {
+            if(e.key === '%') {
+                this.percentageButton.click();
+            }
+        });
+
     }
 
     buttonEqualFunc() {
